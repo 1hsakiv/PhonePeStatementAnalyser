@@ -1,6 +1,7 @@
 package com.example.phonepestatementanalyser;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     ArrayList<Double> numbers = processPdf(selectedPdfUri);
 
                     handler.post(new Runnable() {
+                        @SuppressLint("SetTextI18n")
                         @Override
                         public void run() {
                             //UI Thread work here
@@ -158,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
         return numbers;
     }
 
+    @SuppressLint("SetTextI18n")
     private void displayResults(double credits, double debits) {
         creditsTextView.setText("Total Credits: " + credits);
         debitsTextView.setText("Total Debits: " + debits);
